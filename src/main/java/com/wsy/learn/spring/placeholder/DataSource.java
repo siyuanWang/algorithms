@@ -1,5 +1,10 @@
 package com.wsy.learn.spring.placeholder;
 
+/**
+ * org.springframework.context.support.AbstractApplicationContext
+ * #invokeBeanFactoryPostProcessors(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)
+ * 在application refresh的时候，会添加进去 properties
+ */
 public class DataSource {
 
     /**
