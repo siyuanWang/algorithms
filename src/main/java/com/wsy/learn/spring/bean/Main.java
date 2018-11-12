@@ -1,4 +1,4 @@
-package com.wsy.learn.spring;
+package com.wsy.learn.spring.bean;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;

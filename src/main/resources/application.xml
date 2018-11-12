@@ -9,5 +9,12 @@
 
 
     <context:component-scan base-package="com.wsy.*"/>
+    <context:property-placeholder location="classpath*:config/*.properties"/>
 
+    <bean id="dataSource" class="com.wsy.learn.spring.placeholder.DataSource">
+        <property name="driveClass" value="${driveClass}" />
+        <property name="url" value="${url}" />
+        <property name="userName" value="${userName}" />
+        <property name="password" value="${password}" />
+    </bean>
 </beans>

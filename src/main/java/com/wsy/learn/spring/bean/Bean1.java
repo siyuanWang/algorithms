@@ -1,4 +1,4 @@
-package com.wsy.learn.spring;
+package com.wsy.learn.spring.bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

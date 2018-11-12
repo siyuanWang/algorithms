@@ -1,4 +1,4 @@
-package com.wsy.learn.spring;
+package com.wsy.learn.spring.listener;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
