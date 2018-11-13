@@ -1,30 +1,38 @@
 package com.wsy.learn.spring.placeholder;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 /**
  * org.springframework.context.support.AbstractApplicationContext
  * #invokeBeanFactoryPostProcessors(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)
  * 在application refresh的时候，会添加进去 properties
  */
+@Component
 public class DataSource {
 
     /**
      * 驱动类
      */
+    @Value(value = "${driveClass}")
     private String driveClass;
 
     /**
      * jdbc地址
      */
+    @Value("${url}")
     private String url;
 
     /**
      * 用户名
      */
+    @Value("#{appConfig['userName']}")
     private String userName;
 
     /**
      * 密码
      */
+    @Value("#{appConfig['config1']}")
     private String password;
 
     public String getDriveClass() {

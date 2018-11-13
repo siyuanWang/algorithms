@@ -1,6 +1,8 @@
 package com.wsy.learn.spring.placeholder;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,6 +11,7 @@ import java.io.FileReader;
 /**
  * 把classpath下的Json文件赋值给bean
  */
+@Component
 public class JSONUtil {
 
     File in;

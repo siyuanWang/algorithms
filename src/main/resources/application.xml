@@ -2,24 +2,38 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        					http://www.springframework.org/schema/beans/spring-beans.xsd
     					http://www.springframework.org/schema/context
-    					http://www.springframework.org/schema/context/spring-context.xsd">
+    					http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
     <context:component-scan base-package="com.wsy.*"/>
     <context:property-placeholder location="classpath*:config/*.properties"/>
-    <context:property-placeholder location="classpath*:config/*.json"/>
-
-    <bean id="dataSource" class="com.wsy.learn.spring.placeholder.DataSource">
-        <property name="driveClass" value="${driveClass}"/>
-        <property name="url" value="${url}"/>
-        <property name="userName" value="${userName}"/>
-        <property name="password" value="${password}"/>
-    </bean>
 
     <bean id="JSONUtil" class="com.wsy.learn.spring.placeholder.JSONUtil">
         <property name="in" value="classpath:template"/>
+    </bean>
+    <!--file list配置方式-->
+    <bean id="appConfig" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:config/data.properties</value>
+                <value>classpath:config/data1.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!--第二种，通过util:properties-->
+    <util:properties id="appConfig1" location="classpath*:config/*.properties"/>
+
+    <bean id="spc" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:config/data.properties</value>
+                <value>classpath:config/data1.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="false"/>
     </bean>
 </beans>
