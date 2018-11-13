@@ -20,6 +20,6 @@
     </bean>
 
     <bean id="JSONUtil" class="com.wsy.learn.spring.placeholder.JSONUtil">
-        <property name="in" value="classpath:config/sku_template.json"/>
+        <property name="in" value="classpath:template"/>
     </bean>
 </beans>
