@@ -57,7 +57,16 @@
     "displayType": "int",
     "planStatus": "int",
     "mediaType": "int",
-    "batchId": "long"
+    "batchId": {
+      "pcrRatio": "int",
+      "wlRatio": "int",
+      "planId": "long",
+      "adowner": "string",
+      "startTime": "date",
+      "endTime": "date",
+      "isHot": "int",
+      "isLock": "int"
+    }
   },
   "comments": "int",
   "goodComments": "int",
