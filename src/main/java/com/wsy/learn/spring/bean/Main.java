@@ -30,7 +30,7 @@ public class Main {
         return a;
     }
 
-    @Scheduled(fixedDelay = 1000, initialDelay = 1000)
+    //@Scheduled(fixedDelay = 1000, initialDelay = 1000)
     public void sync() {
         System.out.println("Main开始Sync");
         sync1();
