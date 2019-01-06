@@ -50,9 +50,34 @@ public class WeakReferenceStudy {
         System.out.println("add success index =" + index);
         for (Object x; (x = queue.poll()) != null; ) {
             System.out.println("queue poll,prepare GC, index = " + index);
+            //需要手动置为Null，不然gc回收不掉
+            //置为Null之前可以do something...
             ((Entry) x).bytes = null;
         }
         index++;
+    }
+
+    /**
+     * 原理和ThreadLocal 清理 ThreadLocalMap 的元素一样，防止引用对象本身内存泄漏。
+     */
+    public void clear() {
+        if(table != null) {
+//            int i = 0;
+            //这种写法会发现e元素每次循环，都是同一个对象，不是每次拿最新的table[i] 赋值给 e,这是为什么呢？
+//            for(Entry e = table[i]; i < table.length; i++) {
+//                if(e.bytes == null) {
+//                    table[i] = null;
+//                }
+//            }
+            //思考了是不是int 放在外面就会减少i变量的创建，不过编译器也会优化，不会反复创建同一个基础数据类型
+            int i= 0;
+            for(; i < table.length; i++) {
+                Entry e = table[i];
+                if(e.bytes == null) {
+                    table[i] = null;
+                }
+            }
+        }
     }
 
     public void addNoQueue(Byte[] bytes) {
@@ -102,12 +127,14 @@ public class WeakReferenceStudy {
         WeakReferenceStudy study = new WeakReferenceStudy();
         for (int i = 0; i < 16; i++) {
             //能够触发ReferenceQueue事件
-            //study.add(new Byte[1024 * 100]);
+            study.add(new Byte[1024 * 34]);
+
             //不能触发
             //study.addAndKeyRef(new Byte[1024 * 100]);
             //
-            study.addNoQueue(new Byte[1024 * 100]);
+            //study.addNoQueue(new Byte[1024 * 100]);
         }
+        study.clear();
         study.string();
     }
 
