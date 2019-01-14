@@ -1,4 +1,4 @@
-package com.wsy.learn.jvm.autoproxy;
+package com.wsy.learn.jvm.autoproxy.jdkproxy;
 
 /**
  * 静态代理

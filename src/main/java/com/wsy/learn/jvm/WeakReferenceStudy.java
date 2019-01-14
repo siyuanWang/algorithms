@@ -78,6 +78,16 @@ public class WeakReferenceStudy {
                 }
             }
         }
+
+        if(tableNoQueue != null) {
+            int i= 0;
+            for(; i < tableNoQueue.length; i++) {
+                EntryNoQueue e = tableNoQueue[i];
+                if(e != null && e.bytes == null) {
+                    tableNoQueue[i] = null;
+                }
+            }
+        }
     }
 
     public void addNoQueue(Byte[] bytes) {
@@ -132,7 +142,7 @@ public class WeakReferenceStudy {
             //不能触发
             //study.addAndKeyRef(new Byte[1024 * 100]);
             //
-            //study.addNoQueue(new Byte[1024 * 100]);
+//            study.addNoQueue(new Byte[1024 * 100]);
         }
         study.clear();
         study.string();
