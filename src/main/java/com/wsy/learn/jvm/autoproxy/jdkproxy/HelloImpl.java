@@ -1,6 +1,11 @@
 package com.wsy.learn.jvm.autoproxy.jdkproxy;
 
-public class HelloImpl implements Hello {
+public final class HelloImpl implements Hello {
+    private int[] array;
+
+    public HelloImpl() {
+        this.array = new int[1024*10];
+    }
 
     @Override
     public void sayHello(String str) {

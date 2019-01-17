@@ -25,9 +25,11 @@ public class LogInvocationHandler implements InvocationHandler {
 
 
     public static void main(String[] args) {
-        Hello hello = (Hello) Proxy.newProxyInstance(LogInvocationHandler.class.getClassLoader(), // 1. 类加载器
+        Object proxy = Proxy.newProxyInstance(LogInvocationHandler.class.getClassLoader(), // 1. 类加载器
                 new Class<?>[]{Hello.class}, // 2. 代理需要实现的接口，可以有多个
                 new LogInvocationHandler(new HelloImpl()));// 3. 方法调用的实际处理者
+
+        Hello hello = (Hello) proxy;
         hello.sayHello("world");
         System.out.println(hello);
     }
